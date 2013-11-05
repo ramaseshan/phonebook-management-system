@@ -1,0 +1,54 @@
+<html>
+	<head>
+		{% include "css_js.html"%}
+	</head>
+	<body style="margin-left: 50px; margin-top: 30px;">
+		<div id="content" class="col-sm-11">
+		<form action="/addcontact/" method="post" class="form-horizontal">{% csrf_token %}
+			
+				    <div class="controls-row">
+				    <label class="col-lg-2 control-label">Full Name</label>
+				    <div class="col-lg-3">
+				    {{form.cname }}
+				    {{form.cname.errors }}
+				    </div>
+				    </div>
+				   	<br />
+				   	<div class="controls-row">
+				    <label class="col-lg-2 control-label">Mobile Number</label>
+				    <div class="col-lg-3">
+				    {{ form.cmob }}
+				    {{ form.cmob.errors }}
+				    </div>
+				    </div>
+					<br />
+					<div class="controls-row">
+				    <label class="col-lg-2 control-label">Landline Number</label>
+				    <div class="col-lg-3">
+				    {{form.cland }}
+				    {{form.cland.errors }}
+				    </div>
+				    </div>
+				    <br />
+				    <div class="form-group ">
+				    <label class="col-lg-2 control-label">Address</label>
+				    <div class="col-lg-3">
+				    {{form.caddress }}
+				    {{form.caddress.errors }}
+				    </div>				  
+				    </div>
+					<br />			     	
+				    <div class="form-group">
+				    <label class="col-lg-2 control-label">Group</label>
+				    <div class="col-lg-3">
+				    {{form.relation }}
+				    {{form.relation.errors}}
+				    </div>
+				    </div>
+				    
+				    <button type="submit" class="btn btn-primary">Submit</button>
+				    <a href="/contact/"><button type="button" class="btn btn-primary">Cancel</button></a>
+				   </form>
+				</div>
+	</body>
+</html>

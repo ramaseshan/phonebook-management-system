@@ -1,0 +1,43 @@
+<html>
+	<head>
+		{% include "css_js.html" %}
+	</head>
+	<body bgcolor="grey">
+<div style="margin-top: 50px">
+	<a href ="/logout/" class="pull-right" style="margin-right: 100px;"> <button type="button" class="btn btn-danger">Logout</button></a>
+	</div>
+	<br><br>
+	<a href="/addcontact/"><button type="button" class="btn btn-primary">Add New Contact</button></a>
+	<br><br>
+	<div style="margin-right: 30px">
+		<table cellpadding="0" cellspacing="0" border="0" class="display" id="example" width="80%">
+			<thead>
+			<th> Name</th>
+			<th> Mobile Number</th>
+			<th>Landline</th>
+			<th>Address</th>
+			<th>Relationship</th>
+			</thead>
+			<tbody>
+			{% for name in contacts %}
+		<tr>
+				<td>{{name.cname}} </td>
+				<td>{{name.cmob}}  </td>
+				<td>{{name.cland}}</td>
+				<td>{{name.caddress}}</td>
+				<td>{{name.relation}}</td>
+		</tr>
+			{%endfor%}
+			</tbody>
+		</table>
+		</div>
+	</body>
+			<script type="text/javascript" charset="utf-8">
+			var oTable;
+			var giRedraw = false;
+			$(document).ready(function() {
+				oTable = $('#example').dataTable();
+			});
+					</script>
+
+</html>
