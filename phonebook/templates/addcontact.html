@@ -3,7 +3,14 @@
 		{% include "css_js.html"%}
 	</head>
 	<body style="margin-left: 50px; margin-top: 30px;">
+		{%include "menu.html"%}
 		<div id="content" class="col-sm-11">
+			
+			
+				{{error}}
+			
+				{{err}}
+			
 		<form action="/addcontact/" method="post" class="form-horizontal">{% csrf_token %}
 			
 				    <div class="controls-row">
@@ -45,8 +52,8 @@
 				    {{form.relation.errors}}
 				    </div>
 				    </div>
-				    
-				    <button type="submit" class="btn btn-primary">Submit</button>
+				    <br/>
+				    <button type="submit" class="btn btn-primary form-control">Submit</button>
 				    <a href="/contact/"><button type="button" class="btn btn-primary">Cancel</button></a>
 				   </form>
 				</div>

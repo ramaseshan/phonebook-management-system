@@ -12,9 +12,12 @@ class relations(models.Model):
     
 class contacts(models.Model):
     
-    cname = models.CharField(max_length=100, blank=False, null=False)
+    cname = models.CharField(max_length=100, blank=False, null=False, primary_key=True)
     cmob = models.BigIntegerField(max_length=15, blank=False, null=False)
-    cland = models.BigIntegerField(max_length=15,blank=False, null=False)
-    caddress = models.CharField(max_length=200, blank=False, null=False)
-    relation = models.ForeignKey(relations)
+    cland = models.BigIntegerField(max_length=15, null=True, blank=True)
+    caddress = models.CharField(max_length=200, null=True, blank=True)
     user = models.ForeignKey(User)
+    relation = models.ForeignKey(relations)
+
+    def __unicode__(self):
+        return '%s' % (self.cname)
