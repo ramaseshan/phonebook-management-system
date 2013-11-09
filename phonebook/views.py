@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from phonebook.models import *
 from phonebook.forms import addcontact
+import json
 
 def Login(request):
     c = {}
@@ -64,10 +65,23 @@ def AddContact(request):
         return render(request, "addcontact.html", {'form': form,'relation':relation})
 
 def EditContact(request):
-    if request.method == 'POST':
-        value = request.POST['name']
-        print value
-    return HttpResponseRedirect('/contact/')
+    c={}
+    c.update(csrf(request))
+    if request.is_ajax:
+        print "comes here"
+        value1 = request.GET['name']
+        print value1
+        data = contacts.objects.filter(cname=value1)
+        print data
+        response_data = {}
+        response_data['result'] = 'failed'
+        response_data['message'] = 'You messed up'
+        json = json.dumps(data)
+        print json
+        return HttpResponse(json.dumps(response_data), content_type='application/json')
+    else:
+        return HttpResponse("Something went wrong")
+    
     
 def Logout(request):
     request.session['loggedin'] = False
